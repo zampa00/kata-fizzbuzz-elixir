@@ -8,4 +8,8 @@ defmodule FizzBuzzTest do
   test "when 2 say 2" do
     assert FizzBuzz.say(2) == "2"
   end
+
+  test "when 3 say Fizz" do
+    assert FizzBuzz.say(3) == "Fizz"
+  end
 end
