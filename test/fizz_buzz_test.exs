@@ -12,4 +12,8 @@ defmodule FizzBuzzTest do
   test "when 3 say Fizz" do
     assert FizzBuzz.say(3) == "Fizz"
   end
+
+  test "when 6 say Fizz" do
+    assert FizzBuzz.say(6) == "Fizz"
+  end
 end
