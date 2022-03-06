@@ -13,8 +13,8 @@ defmodule FizzBuzzRule do
     Enum.reduce(rules, "", fn rule, acc -> "#{acc}#{rule.(number)}" end)
   end
 
-  @spec apply_default_rule(String.t(), integer) :: String.t()
-  def apply_default_rule(result, number) do
+  @spec parse_number_if_no_rule_applied(String.t(), integer) :: String.t()
+  def parse_number_if_no_rule_applied(result, number) do
     if result == "" do
       "#{number}"
     else

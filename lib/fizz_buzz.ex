@@ -11,6 +11,6 @@ defmodule FizzBuzz do
   def say(number, rules) do
     rules
     |> apply_rules(number)
-    |> apply_default_rule(number)
+    |> parse_number_if_no_rule_applied(number)
   end
 end
