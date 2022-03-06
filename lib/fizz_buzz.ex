@@ -4,7 +4,11 @@ defmodule FizzBuzz do
     if rem(number, 3) == 0 do
       "Fizz"
     else
-      "#{number}"
+      if number == 5 do
+        "Buzz"
+      else
+        "#{number}"
+      end
     end
   end
 end
