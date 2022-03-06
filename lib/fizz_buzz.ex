@@ -1,13 +1,17 @@
 defmodule FizzBuzz do
   @spec say(integer) :: String.t()
   def say(number) do
-    if rem(number, 3) == 0 do
-      "Fizz"
+    if rem(number, 15) == 0 do
+      "FizzBuzz"
     else
-      if rem(number, 5) == 0 do
-        "Buzz"
+      if rem(number, 3) == 0 do
+        "Fizz"
       else
-        "#{number}"
+        if rem(number, 5) == 0 do
+          "Buzz"
+        else
+          "#{number}"
+        end
       end
     end
   end
