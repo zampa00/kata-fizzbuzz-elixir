@@ -1,4 +1,5 @@
 defmodule FizzBuzz do
+  @type rule() :: (integer -> String.t())
 
   @spec say(integer) :: String.t()
   def say(number) do
@@ -7,7 +8,7 @@ defmodule FizzBuzz do
     |> apply_default_rule(number)
   end
 
-  @spec get_rules() :: list((integer -> String.t()))
+  @spec get_rules() :: list(rule())
   def get_rules() do
     [
       whenDivThenSay(3, "Fizz"),
@@ -15,7 +16,7 @@ defmodule FizzBuzz do
     ]
   end
 
-  @spec apply_rules(list((integer -> String.t())), integer) :: String.t()
+  @spec apply_rules(list((rule())), integer) :: String.t()
   def apply_rules(rules, number) do
     Enum.reduce(rules, "", fn rule, acc -> "#{acc}#{rule.(number)}" end)
   end
@@ -29,7 +30,7 @@ defmodule FizzBuzz do
     end
   end
 
-  @spec whenDivThenSay(integer, String.t()) :: (integer -> String.t())
+  @spec whenDivThenSay(integer, String.t()) :: rule()
   def whenDivThenSay(div_by, say) do
     fn x ->
       if rem(x, div_by) == 0 do
