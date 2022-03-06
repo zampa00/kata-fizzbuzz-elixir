@@ -6,13 +6,18 @@ defmodule FizzBuzz do
       whenDivThenSay(5, "Buzz")
     ]
 
-    result = Enum.reduce(rules, "", fn rule, acc -> "#{acc}#{rule.(number)}" end)
+    result = apply_rules(number, rules)
 
     if result == "" do
       "#{number}"
     else
       result
     end
+  end
+
+  @spec apply_rules(integer, list((integer -> String.t()))) :: String.t()
+  def apply_rules(number, rules) do
+    Enum.reduce(rules, "", fn rule, acc -> "#{acc}#{rule.(number)}" end)
   end
 
   @spec whenDivThenSay(integer, String.t()) :: (integer -> String.t())
