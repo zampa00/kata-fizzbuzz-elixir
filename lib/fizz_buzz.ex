@@ -3,7 +3,12 @@ defmodule FizzBuzz do
 
   @spec say(integer) :: String.t()
   def say(number) do
-    get_rules()
+    say(number, get_rules())
+  end
+
+  @spec say(integer, list(rule())) :: String.t()
+  def say(number, rules) do
+    rules
     |> apply_rules(number)
     |> apply_default_rule(number)
   end
@@ -16,7 +21,7 @@ defmodule FizzBuzz do
     ]
   end
 
-  @spec apply_rules(list((rule())), integer) :: String.t()
+  @spec apply_rules(list(rule()), integer) :: String.t()
   def apply_rules(rules, number) do
     Enum.reduce(rules, "", fn rule, acc -> "#{acc}#{rule.(number)}" end)
   end
